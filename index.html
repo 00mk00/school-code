@@ -1,154 +1,295 @@
 <!DOCTYPE html>
-<html lang="ru">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Code.School ITI</title>
+    <title>My page</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
     <style>
-        body {
-            font-size: 16px;
-            padding: 0px;
-            margin: 0px;
-        }
+/*
+Palette colors
+DarkBlue    #194977
+Blue        #2697d9
+LightBlue   #33c6f2
+DarkYellow  #ffe135
+LightYellow #fefd1b
+White       #ffffff
+DarkGreen   #109755
+LightGreen  #15ffaa
+*/
+:root {
+    --color-bg: #ffffff;
+    --color-primary: #fffd93ef;
+    --color-secondary: #8a68a0;
+    --color-accent: #8a68a0;
+    --color-text-dark: #000000;
+    --color-text-light: #6c9eb6;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-size: 16px;
+    padding: 0px;
+    margin: 0px;
+    background: var(--color-bg);
+}
+.page-block {
+    
+    height: auto;
+    min-height: 100vh;
+}
+.short-info {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1.62fr;
+    grid-template-rows: 1fr 1fr auto;
+    grid-template-areas:
+        "photo name"
+        "photo about"
+        "links links";
+    overflow: hidden;
+    height: 100vh;
+    background: var(--color-primary);
+    color: var(--color-text-light);
+    margin: 0px;
+}
+.photo-block {
+    grid-area: photo;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 16px;
+}
+.photo-image {
+    width: 190px;
+    height: 190px;
+    border-radius: 20%;
+    background-image: url(https://s.tcdn.co/3db/45b/3db45b9a-cd03-397a-ad1a-a3c474c8d42e/5.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.name-block {
+    grid-area: name;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 16px;
+    font-size: 300%;
+    color: var(--color-secondary);
+}
+.about-me-block {
+    grid-area: about;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 16px;
+    font-size: 120%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.about-me-block>p {
+    max-width: 400px;
+    padding: 0px;
+    margin: 0px;
+}
+.links-block {
+    grid-area: links;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background: var(--color-secondary);
+}
+.links-block>a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 64px;
+    width: 64px;
+    margin: 16px;
+    color: #194977;
+    background: var(--color-accent);
+}
 
-        .container-grid {
-            display: grid;
-            grid-template-columns: 2fr 3fr;
-            grid-template-rows: 1fr 1fr auto;
-            grid-template-areas:
-                "photo name"
-                "photo about"
-                "links links";
-            overflow: hidden;
-            height: auto;
-            min-height: 100vh;
-            background: #25508C;
-        }
+.links-block>a.link-vk {
+    background: 
+        url(https://brand.vkforms.ru/static/media/logo_color_198.231228dd.svg) 
+        no-repeat 50% / contain;
+}
+.links-block>a.link-facebook {
+    background: 
+        url(https://en.facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png)
+        no-repeat 50% / contain;
+}
+.links-block>a.link-instagram {
+    background: url(https://instagram-brand.com/wp-content/uploads/2016/11/Instagram_AppIcon_Aug2017.png?w=64) 
+    no-repeat 50% / contain;
+}
+.links-block>a.link-twitter {
+    background: url(https://cdn3.iconfinder.com/data/icons/capsocial-round/500/twitter-64.png) 
+    no-repeat 50% / contain;
+}
 
-        .photo-block {
-            grid-area: photo;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding: 16px;
-        }
+#page2 ,
+#page3, 
+#page4
+{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 100vh;
+    margin: 0px;
+    background: var(--color-accent);
+    color: var(--color-text-light);
+    font-size: 2rem;
+}
+#page3 {
+    background: var(--color-primary);
+    color: var(--color-text-light);
+}
+#page4 {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+}
+#page2 {
+    color: var(--color-primary);
+}
 
-        .my-photo {
-            background: url(https://sun9-38.userapi.com/c857016/v857016487/1da1/npX3TXcv_v4.jpg);
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            border-radius: 50%;
-            border: 2px solid #FFFFFF55;
-            width: 200px;
-            height: 200px;
-        }
-
-        .name-block {
-            grid-area: name;
-            display: flex;
-            align-items: flex-end;
-            justify-content: flex-start;
-            padding: 16px;
-            font-size: 250%;
-            color: #FFFFFF;
-        }
-
-        .about-block {
-            grid-area: about;
-            display: flex;
-            align-items: flex-start;
-            padding: 16px;
-            font-size: 120%;
-            color: #FFFFFF;
-        }
-
-        .links-block {
-            grid-area: links;
-            background: #D0D0FF;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .links-block>a {
-            display: inline-flex;
-            height: 64px;
-            width: 64px;
-            margin: 16px;
-            background: #25508C;
-            color: #FFFFFF;
-            border-radius: 50%;
-            text-decoration: none;
-            align-items: center;
-            justify-content: center;
-        }
+.link-next {
+    display: inline-flex;
+    position: relative;
+    width: 48px;
+    height: 48px;
+    background: var(--color-primary);
+    border: var(--color-text-light) solid 2px;
+    align-self: center;
+    border-radius: 50%;
+}
+.link-next::after {
+    position: absolute;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border: var(--color-text-light) solid 12px;
+    border-top-width: 20px;
+    border-bottom-width: 0px;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    left: 12px;
+    top: 18px;
+}
 
 
-        .page-links {
-            padding: 24px;
-        }
+@media screen and (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+@media(max-width: 650px) {
+    .short-info {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+        grid-template-areas:
+            "photo "
+            "name"
+            "about"
+            "links";
+        overflow: hidden;
+        height: auto;
+        min-height: 100vh;
+        background: var(--color-primary);
+        color: var(--color-text-light);
+        margin: 0px;
+    }
+    .photo-block {
+        grid-area: photo;
+        display: flex;
+        justify-content: center;
+    }
+    .name-block {
+        grid-area: name;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        font-size: 300%;
+        color: var(--color-secondary);
+    }
+    .about-me-block {
+        grid-area: about;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 16px;
+        font-size: 120%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .about-me-block>p {
+        max-width: 400px;
+        padding: 0px;
+        margin: 0px;
+    }
+}
 
-        a.lesson {
-            position: relative;
-            display: inline-block;
-            padding: 8px 16px;
-            margin: 4px 0px;
-            border-left: #505050 solid 4px;
-            color: #505050;
-            background: #50505015;
-        }
-
-        a.lesson:hover {
-            background-color: #505050;
-            color: #ffffff;
-            border-left-color: #c0c0c0;
-            text-decoration: none;
-            transition: 1s background-color,
-                1s color,
-                1s border-left-color;
-        }
+@media(max-width: 400px) {
+    .about-me-block {
+        justify-content: stretch;
+        min-width: 0px;
+    }
+    .links-block>a {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        height: 48px;
+        width: 48px;
+        margin: 8px;
+        color: #194977;
+        background: var(--color-accent);
+    }
+}
     </style>
 </head>
-
 <body>
-    <div class="container-grid">
-        <div class="photo-block">
-            <div class="my-photo"></div>
-        </div>
-        <div class="name-block">
-            School Code
-        </div>
-        <div class="about-block">
-            Школа рпограммирования в Инженерно-техническом институте для школьников
-        </div>
-        <div class="links-block">
-            <a href="#page1">VK</a>
-            <a href="#page2">FB</a>
-            <a href="#page3">INST</a>
-            <a href="#page4">TW</a>
+    <div id="page1" class="page-block">
+        <div class="short-info">
+            <div class="photo-block">
+                <div class="photo-image"></div>
+            </div>
+            <div class="name-block">
+                Margo K
+            </div>
+            <div class="about-me-block">
+                <p>
+                    Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века.
+                </p>
+                <a href="#page2" class="link-next"></a>
+            </div>
+            <div class="links-block">
+                <a href="#page1" class="link-vk"></a>
+                <a href="#page2" class="link-facebook"></a>
+                <a href="#page3" class="link-instagram"></a>
+                <a href="#page4" class="link-twitter"></a>
+            </div>
         </div>
     </div>
-
-    <div class="page-links">
-        <h2>Lessons examples for code.school ITI</h2>
-        <a class="lesson" href="./lesson_tags/index.html" title=" ">Ознакомление с некоторыми основными тегами</a>
-        <br>
-        <a class="lesson" href="./lesson_text/index.html" title=" ">Стилизация текста</a>
-        <br>
-        <a class="lesson" href="./lesson_links/index.html" title=" ">Ссылки</a>
-        <br>
-        <a class="lesson" href="./lesson_js/index.html" title=" ">JavaScript</a>
-        <br>
-        <a class="lesson" href="./lesson_artbox/index.html" title=" ">X-tree</a>
-        <br>
-        <a class="lesson" href="./lesson_x0/index.html" title=" ">TicTacToe game</a>
-        <br>
-        <a class="lesson" href="./lesson_transformations/index.html" title=" ">Transformations</a>
-        <br>
+    <div id="page2" class="page-block">
+        <h3>Блок с информацией #2</h3>
     </div>
+    <div id="page3" class="page-block">
+        <h3>Блок с информацией #3</h3>
+    </div>
+    <div id="page4" class="page-block">
+        <h3>Блок с информацией #4</h3>
+    </div>
+    
 </body>
-
 </html>
